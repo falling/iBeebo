@@ -107,8 +107,7 @@ public class ImgsActivity extends ToolBarAppCompatActivity {
     public ImageView iconImage(String filepath, int index, CheckBox checkBox) throws FileNotFoundException {
         ImageView imageView = new ImageView(this);
         imageView.setBackgroundResource(R.drawable.imgbg);
-        float alpha = 100;
-        imageView.setAlpha(alpha);
+        imageView.setImageAlpha(255);
         util.imgExcute(imageView, imgCallBack, filepath);
         imageView.setOnClickListener(new ImgOnclick(filepath, checkBox));
         return imageView;

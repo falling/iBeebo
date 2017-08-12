@@ -15,7 +15,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.ImageView;
 
-public class BlurImageView extends ImageView {
+public class BlurImageView extends android.support.v7.widget.AppCompatImageView {
 
     private static int radius = 20;
 

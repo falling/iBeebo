@@ -20,8 +20,6 @@ public class AppLoggerUtils {
      * @param msg The message you would like logged.
      */
     public static void v(String msg) {
-        if (BuildConfig.DEBUG)
-            android.util.Log.v(TAG, buildMessage(msg));
     }
 
     /**
@@ -31,8 +29,6 @@ public class AppLoggerUtils {
      * @param thr An exception to log
      */
     public static void v(String msg, Throwable thr) {
-        if (BuildConfig.DEBUG)
-            android.util.Log.v(TAG, buildMessage(msg), thr);
     }
 
     /**
@@ -143,13 +139,5 @@ public class AppLoggerUtils {
 
 
     public static void printCallStack() {
-        Throwable ex = new Throwable();
-        StackTraceElement[] stackElements = ex.getStackTrace();
-        if (stackElements != null) {
-            for (StackTraceElement stackElement : stackElements) {
-                String stack = stackElement.getClassName() + " " + stackElement.getLineNumber() + " " + stackElement.getMethodName();
-                Log.d("printCallStack", stack);
-            }
-        }
     }
 }

@@ -7,12 +7,10 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.zarroboogs.devutils.DevLog;
 import org.zarroboogs.weibo.setting.SettingUtils;
 import org.zarroboogs.weibo.widget.viewpagerfragment.ChildPage;
 import org.zarroboogs.weibo.widget.viewpagerfragment.ViewPagerFragment;
 
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.SparseArray;
 
@@ -76,7 +74,6 @@ public class HotWeiboViewPagerFragment extends ViewPagerFragment {
         // TODO Auto-generated method stub
         BaseHotWeiboFragment hotWeiboFragment = (BaseHotWeiboFragment) getCurrentFargment();
         hotWeiboFragment.onPageSelected();
-        DevLog.printLog("onViewPageSelected", "" + id);
 
     }
 }

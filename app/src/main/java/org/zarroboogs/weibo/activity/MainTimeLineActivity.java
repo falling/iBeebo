@@ -185,7 +185,6 @@ public class MainTimeLineActivity extends AbstractAppActivity {
 
             @Override
             public void onClick(View v) {
-                Log.d("onOptionsItemSelected", " setToolbarNavigationClickListener");
             }
         });
         mDrawerLayout.setDrawerListener(drawerToggle);
@@ -214,13 +213,11 @@ public class MainTimeLineActivity extends AbstractAppActivity {
             super.onDrawerClosed(drawerView);
             LocalBroadcastManager.getInstance(MainTimeLineActivity.this).sendBroadcast(
                     new Intent(AppEventAction.SLIDING_MENU_CLOSED_BROADCAST));
-            Log.d("onOptionsItemSelected", " onDrawerClosed ");
         }
 
         @Override
         public void onDrawerOpened(View drawerView) {
             super.onDrawerOpened(drawerView);
-            Log.d("onOptionsItemSelected", " onDrawerOpened");
             if (mDrawerLayout.isDrawerOpen(findViewById(R.id.left_drawer_layout))) {
                 mDrawerLayout.closeDrawer(Gravity.RIGHT);
             }

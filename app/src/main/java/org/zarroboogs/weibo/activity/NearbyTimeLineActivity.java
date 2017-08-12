@@ -1,4 +1,3 @@
-
 package org.zarroboogs.weibo.activity;
 
 //import com.google.android.gms.maps.CameraUpdate;
@@ -19,13 +18,16 @@ import org.zarroboogs.weibo.bean.data.NearbyStatusListBean;
 import org.zarroboogs.weibo.dao.NearbyTimeLineDao;
 import org.zarroboogs.weibo.support.utils.Utility;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -201,6 +203,16 @@ public class NearbyTimeLineActivity extends AbstractAppActivity {
         Toast.makeText(NearbyTimeLineActivity.this, getString(R.string.gps_is_searching), Toast.LENGTH_SHORT).show();
 
         if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
+            }
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 0, locationListener);
         }
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {

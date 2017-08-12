@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.zarroboogs.devutils.Constaces;
-import org.zarroboogs.devutils.DevLog;
 import org.zarroboogs.http.AsyncHttpHeaders;
 import org.zarroboogs.http.AsyncHttpRequest;
 import org.zarroboogs.http.AsyncHttpResponse;
@@ -89,7 +88,6 @@ public class SendWithAppSrcServices extends Service {
         ArrayList<String> send = sendImgData.getSendImgs();
         final int count = send.size();
 
-        DevLog.printLog("startPicCacheAndSendWeibo ", "SEND_COUNT: " + count);
         if (count > 0) {
             for (int i = 0; i < send.size(); i++) {
                 SendBitmapWorkerTask sendBitmapWorkerTask = new SendBitmapWorkerTask(getApplicationContext(),
@@ -97,10 +95,8 @@ public class SendWithAppSrcServices extends Service {
                             @Override
                             public void onCacheDone(String newFile) {
                                 sendImgList.add(newFile);
-                                DevLog.printLog("startPicCacheAndSendWeibo ", " Should Send Count : " + count + "  current Count :" + sendImgList.size());
                                 if (sendImgList.size() == count) {
                                     sendWeibo(sendImgData, mTextContent);
-                                    DevLog.printLog("startPicCacheAndSendWeibo ", " Start Send==========");
                                 }
                             }
                         });
@@ -141,7 +137,6 @@ public class SendWithAppSrcServices extends Service {
 
                 @Override
                 public void onUpSuccess(String pids) {
-                    DevLog.printLog("UploadHelper onUpSuccess ", "" + pids);
                     sendWeiboWidthPids(weiboCode, text, pids);
                 }
 
@@ -221,18 +216,14 @@ public class SendWithAppSrcServices extends Service {
 
                     clearAppsrc();
 
-                    DevLog.printLog(TAG, "发送成功！");
                 } else {
                     NotificationUtility.cancel(R.string.sending);
-                    DevLog.printLog(TAG, sb.getCode() + "    " + sb.getMsg());
                     if (sb.getMsg().equals("未登录")) {
                         mJsAutoLogin.checkUserPassword(mAccountBean.getUname(), mAccountBean.getPwd(), new CheckUserNamePasswordListener() {
 
                             @Override
                             public void onChecked(String msg) {
-                                DevLog.printLog("JSAutoLogin onChecked", msg.trim());
                                 if (TextUtils.isEmpty(msg)) {
-                                    DevLog.printLog("JSAutoLogin onChecked", "startLogin");
                                     mJsAutoLogin.exejs();
                                     mJsAutoLogin.setAutoLogInListener(new AutoLogInListener() {
 
@@ -328,7 +319,6 @@ public class SendWithAppSrcServices extends Service {
         File[] cacheFiles = getExternalCacheDir().listFiles(
                 new WeiBaCacheFile());
         for (File file : cacheFiles) {
-            Log.d("LIST_CAXCHE", " " + file.getName());
             file.delete();
         }
     }

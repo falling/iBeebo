@@ -63,8 +63,6 @@ public class TimeLineUtility {
             String replaced = ori.substring(start, end);
             String src = String.format(format, replaced);
 
-            Log.d("formatLink ", "" + replaced + "    : " + src);
-
             if (!result.contains(src)) {
                 result = result.replace(replaced, src);
             }

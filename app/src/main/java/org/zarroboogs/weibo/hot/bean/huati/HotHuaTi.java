@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class HotHuaTi {
 
     private CardlistInfo cardlistInfo;
-    private ArrayList<HotHuaTiCard> cards;
+    private ArrayList<HotHuaTiCard> cards = new ArrayList<>();
 
 
     public HotHuaTi() {

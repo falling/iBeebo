@@ -29,7 +29,6 @@ public class VideoDownloader {
 
         // Create one directory
 
-        Log.d("warenix", "saved in " + saveInDir);
         boolean success = (new File(saveInDir)).mkdirs();
         if (success) {
             Log.i("warenix", String.format("created dir[%s]", saveInDir));
@@ -41,7 +40,6 @@ public class VideoDownloader {
         // String filepath = Environment.getExternalStorageDirectory()
         // .getAbsolutePath();
         String full_local_file_path = String.format("%s/%s", saveInDir, saveAsFilename);
-        Log.v("warenix_localsize", String.format("of to %s", full_local_file_path));
 
         try {
 
@@ -49,7 +47,6 @@ public class VideoDownloader {
             BufferedOutputStream bfs = new BufferedOutputStream(fos, IO_BUFFER_SIZE);
 
             int iFileSize = VideoDownloader.getContentLength(url);
-            Log.d("warenix", String.format("going to download file size %d", iFileSize));
 
             in = new BufferedInputStream(url.openStream(), IO_BUFFER_SIZE);
 
@@ -81,7 +78,6 @@ public class VideoDownloader {
         int totalDownloaded = 0;
         while ((read = in.read(b)) != -1) {
             totalDownloaded += read;
-            Log.d("warenix", String.format("downloaded: %d", totalDownloaded));
             if (downloadProgressListener != null) {
                 downloadProgressListener.onReceivedProgressUpdate(totalDownloaded, iFileSize);
             }

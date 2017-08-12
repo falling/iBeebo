@@ -22,7 +22,7 @@ import java.util.NavigableSet;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class TopTipsView extends TextView {
+public class TopTipsView extends android.support.v7.widget.AppCompatTextView {
 
     // always show toptipbar, or hide itself when handling out of date data (for
     // example user scroll down listview)

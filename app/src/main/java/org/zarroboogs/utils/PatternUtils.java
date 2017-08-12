@@ -150,8 +150,6 @@ public class PatternUtils {
             return null;
         }
 
-        Log.d("lessionDescriptions_", dwr);
-
         String regex = "(description=)\"(.*?)\"";
 
         List<String> descriptions = matcher(dwr, regex);

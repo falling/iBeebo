@@ -152,7 +152,6 @@ public class RightMenuFragment extends BaseLoadDataFragment {
 
     @Override
     void onLoadDataSucess(String json) {
-        Log.d("FETCH_GROUP ", "onLoadDataSucess: " + json);
 
         GroupListBean groupListBean = new Gson().fromJson(json, GroupListBean.class);
 
@@ -160,9 +159,6 @@ public class RightMenuFragment extends BaseLoadDataFragment {
         if (groupBeans != null) {
             GroupDBTask.update(groupListBean, BeeboApplication.getInstance().getCurrentAccountId());
             BeeboApplication.getInstance().setGroup(groupListBean);
-            for (GroupBean groupBean : groupBeans) {
-                Log.d("FETCH_GROUP ", "" + groupBean.getName());
-            }
             mBaseAdapter.refresh(buildListNavData(groupBeans));
         }
         mSwitchRefreshLayout.setRefreshing(false);
@@ -171,13 +167,11 @@ public class RightMenuFragment extends BaseLoadDataFragment {
 
     @Override
     void onLoadDataFailed(String errorStr) {
-        Log.d("FETCH_GROUP ", "onLoadDataFailed");
         mSwitchRefreshLayout.setRefreshing(false);
     }
 
     @Override
     void onLoadDataStart() {
-        Log.d("FETCH_GROUP ", "onLoadDataStart");
         mSwitchRefreshLayout.setRefreshing(true);
     }
 }

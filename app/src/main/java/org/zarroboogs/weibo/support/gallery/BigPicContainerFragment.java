@@ -3,7 +3,6 @@ package org.zarroboogs.weibo.support.gallery;
 
 import java.io.File;
 
-import org.zarroboogs.devutils.DevLog;
 import org.zarroboogs.msrl.widget.CircleProgressBar;
 import org.zarroboogs.utils.ImageUtility;
 import org.zarroboogs.utils.file.FileLocationMethod;
@@ -68,7 +67,6 @@ public class BigPicContainerFragment extends Fragment {
             String thumbUrl = url != null ? url.replace("/large/", "/thumbnail/") : null;
             String thumb = FileManager.getFilePathFromUrl(thumbUrl, FileLocationMethod.picture_thumbnail);
             if (!TextUtils.isEmpty(thumb) && new File(thumb).exists()) {
-                Log.d("WeiBoThumb_Nail", ": " + thumb + " url:" + url);
                 displayPicture(thumb, animateIn);
             }
 
@@ -155,9 +153,7 @@ public class BigPicContainerFragment extends Fragment {
             }
             getChildFragmentManager().beginTransaction().replace(R.id.child, fragment).commitAllowingStateLoss();
 
-            DevLog.printLog("isThisBitmapTooLargeToRead", "不大能显示");
         } else {
-            DevLog.printLog("isThisBitmapTooLargeToRead", "图片太大不能显示");
             LargePictureFragment fragment = LargePictureFragment.newInstance(path, animateIn);
             getChildFragmentManager().beginTransaction().replace(R.id.child, fragment).commitAllowingStateLoss();
         }

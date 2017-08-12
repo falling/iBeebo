@@ -3,7 +3,6 @@ package org.zarroboogs.weibo.fragment;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.zarroboogs.devutils.DevLog;
 import org.zarroboogs.msrl.widget.MaterialSwipeRefreshLayout;
 import org.zarroboogs.sinaweiboseniorapi.SeniorUrl;
 import org.zarroboogs.weibo.BeeboApplication;
@@ -25,10 +24,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -89,7 +85,6 @@ public class HotWeiboViewPagerChildFragment extends BaseHotWeiboFragment {
             public void onRefresh() {
                 long uid = Long.valueOf(BeeboApplication.getInstance().getAccountBean().getUid());
                 String url = SeniorUrl.hotWeiboApi(BeeboApplication.getInstance().getAccountBean().getGsid(), mCtg, mPage, uid);
-                DevLog.printLog("HotWeiboFragment_get: ", url);
                 loadData(url);
             }
 
@@ -134,11 +129,6 @@ public class HotWeiboViewPagerChildFragment extends BaseHotWeiboFragment {
             getDataList().addNewData(mslBean);
             List<MessageBean> list = result.getMessageBeans();
 
-
-            for (MessageBean messageBean : list) {
-                List<HotWeiboPicInfos> picInfos = messageBean.getPic_infos();
-                DevLog.printLog("getOriginal_pic ", "HotWeiboPicInfos:" + picInfos.size() + "  Original: " + messageBean.getOriginal_pic() + "     Middle: " + messageBean.getBmiddle_pic());
-            }
             if (SettingUtils.isReadStyleEqualWeibo()) {
                 newMsgTipBar.setValue(mslBean, true);
                 mAdapter.addNewData(list);
@@ -147,10 +137,7 @@ public class HotWeiboViewPagerChildFragment extends BaseHotWeiboFragment {
                 addNewDataAndRememberPosition(list, mslBean);
             }
 
-        } else {
-            DevLog.printLog("ERROR", error.getErrmsg());
         }
-
         getSwipeRefreshLayout().setRefreshing(false);
     }
 
@@ -204,7 +191,6 @@ public class HotWeiboViewPagerChildFragment extends BaseHotWeiboFragment {
     void onPageSelected() {
         if (mIsFirst) {
             mIsFirst = false;
-            DevLog.printLog("onViewPageSelected", "onPageSelected-----");
             long uid = Long.valueOf(BeeboApplication.getInstance().getAccountBean().getUid());
             loadData(SeniorUrl.hotWeiboApi(BeeboApplication.getInstance().getAccountBean().getGsid(), mCtg, mPage, uid));
         }

@@ -1,7 +1,6 @@
 package org.zarroboogs.weibo.service;
 
 
-import org.zarroboogs.devutils.DevLog;
 import org.zarroboogs.http.AsyncHttpHeaders;
 import org.zarroboogs.http.AsyncHttpRequest;
 import org.zarroboogs.http.AsyncHttpResponse;
@@ -13,10 +12,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.text.TextUtils;
-
-import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
 
 import java.io.IOException;
 
@@ -53,7 +48,6 @@ public class KeepCookieService extends Service {
                         @Override
                         public void onSuccess(AsyncHttpResponse response) {
                             String r = response.getBody();
-                            DevLog.printLog(TAG, r);
                             if (r.contains("sina_name")) {
                                 stopSelf();
                             } else {

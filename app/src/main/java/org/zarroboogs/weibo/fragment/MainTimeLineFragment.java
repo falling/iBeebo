@@ -282,7 +282,6 @@ public class MainTimeLineFragment extends AbsTimeLineFragment<MessageListBean> i
 
             int intgroupId = intent.getIntExtra(RightMenuFragment.SWITCH_GROUP_KEY, 0);
             String groupId = getGroupIdFromIndex(intgroupId, finalList);
-            Log.d("SwitchGroup", "" + intgroupId + "     " + groupId);
             switchFriendsGroup(groupId);
         }
     };

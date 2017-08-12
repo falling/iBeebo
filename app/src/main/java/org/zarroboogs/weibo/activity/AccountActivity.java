@@ -1,7 +1,6 @@
 
 package org.zarroboogs.weibo.activity;
 
-import org.zarroboogs.devutils.DevLog;
 import org.zarroboogs.weibo.GSIDWebViewActivity;
 import org.zarroboogs.weibo.BeeboApplication;
 import org.zarroboogs.weibo.R;
@@ -192,26 +191,6 @@ public class AccountActivity extends BaseLoginActivity implements LoaderManager.
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == ADD_ACCOUNT_REQUEST_CODE && resultCode == RESULT_OK) {
             refresh();
-            if (data == null) {
-                return;
-            }
-            String expires_time = data.getExtras().getString("expires_in");
-            long expiresDays = TimeUnit.SECONDS.toDays(Long.valueOf(expires_time));
-
-            String content = String.format(getString(R.string.token_expires_in_time), String.valueOf(expiresDays));
-            DevLog.printLog("AccountActivity: ", content);
-            if (false) {
-                Builder builder = new Builder(this).setMessage(content).setPositiveButton(R.string.ok,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                            }
-                        });
-
-                builder.show();
-            }
-
         }
     }
 

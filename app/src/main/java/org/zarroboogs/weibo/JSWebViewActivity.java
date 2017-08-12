@@ -3,7 +3,6 @@ package org.zarroboogs.weibo;
 
 
 import org.zarroboogs.devutils.AssertLoader;
-import org.zarroboogs.devutils.DevLog;
 import org.zarroboogs.injectjs.InjectJS;
 import org.zarroboogs.injectjs.JSCallJavaInterface;
 import org.zarroboogs.injectjs.InjectJS.OnLoadListener;
@@ -115,8 +114,6 @@ public class JSWebViewActivity extends AbstractAppActivity implements IWeiboClie
         @Override
         public void onJSCallJava(String... arg0) {
             // TODO Auto-generated method stub
-            DevLog.printLog("onJSCallJava Uname", "" + arg0[0]);
-            DevLog.printLog("onJSCallJava Upassword", "" + arg0[1]);
         }
 
     }
@@ -126,46 +123,30 @@ public class JSWebViewActivity extends AbstractAppActivity implements IWeiboClie
         mWebView.setWebViewClient(mWeiboWebViewClient);
 //        mWebView.loadUrl(getAuthoUrl());
 
-        if (true) {
-
-            mInjectJS.addJSCallJavaInterface(new JSCallBack(), "loginName.value", "loginPassword.value");
-            mInjectJS.replaceDocument("<a href=\"javascript:;\" class=\"btn btnRed\" id = \"loginAction\">登录</a>",
-                    "<a href=\"javascript:doAutoLogIn();\" class=\"btn btnRed\" id = \"loginAction\">登录</a>");
-            mInjectJS.removeDocument("<a href=\"javascript:history.go(-1);\" class=\"close\">关闭</a>");
-            mInjectJS.removeDocument("<a href=\"http://m.weibo.cn/reg/index?&vt=4&wm=3349&backURL=http%3A%2F%2Fwidget.weibo.com%2Fdialog%2FPublishMobile.php%3Fbutton%3Dpublic\">注册帐号</a><a href=\"http://m.weibo.cn/setting/forgotpwd?vt=4\">忘记密码</a>");
-            mInjectJS.removeDocument("<p class=\"label\"><a href=\"https://passport.weibo.cn/signin/other?r=http%3A%2F%2Fwidget.weibo.com%2Fdialog%2FPublishMobile.php%3Fbutton%3Dpublic\">使用其他方式登录</a></p>");
-            mInjectJS.injectUrl(getAuthoUrl(), new AssertLoader(this).loadJs("inject.js"), "gb2312");
+        mInjectJS.addJSCallJavaInterface(new JSCallBack(), "loginName.value", "loginPassword.value");
+        mInjectJS.replaceDocument("<a href=\"javascript:;\" class=\"btn btnRed\" id = \"loginAction\">登录</a>",
+                "<a href=\"javascript:doAutoLogIn();\" class=\"btn btnRed\" id = \"loginAction\">登录</a>");
+        mInjectJS.removeDocument("<a href=\"javascript:history.go(-1);\" class=\"close\">关闭</a>");
+        mInjectJS.removeDocument("<a href=\"http://m.weibo.cn/reg/index?&vt=4&wm=3349&backURL=http%3A%2F%2Fwidget.weibo.com%2Fdialog%2FPublishMobile.php%3Fbutton%3Dpublic\">注册帐号</a><a href=\"http://m.weibo.cn/setting/forgotpwd?vt=4\">忘记密码</a>");
+        mInjectJS.removeDocument("<p class=\"label\"><a href=\"https://passport.weibo.cn/signin/other?r=http%3A%2F%2Fwidget.weibo.com%2Fdialog%2FPublishMobile.php%3Fbutton%3Dpublic\">使用其他方式登录</a></p>");
+        mInjectJS.injectUrl(getAuthoUrl(), new AssertLoader(this).loadJs("inject.js"), "gb2312");
 
 
-            mInjectJS.setOnLoadListener(new OnLoadListener() {
+        mInjectJS.setOnLoadListener(new OnLoadListener() {
 
-                @Override
-                public void onLoad() {
-                    // TODO Auto-generated method stub
-                    if (mAccountBean != null && !TextUtils.isEmpty(mAccountBean.getUname()) && !TextUtils.isEmpty(mAccountBean.getPwd())) {
-                        mInjectJS.exeJsFunctionWithParam("fillAccount", mAccountBean.getUname(), mAccountBean.getPwd());
-                        if (!JSWebViewActivity.this.isFinishing()) {
-                            mInjectJS.exeJsFunction("doAutoLogIn()");
-                        }
+            @Override
+            public void onLoad() {
+                // TODO Auto-generated method stub
+                if (mAccountBean != null && !TextUtils.isEmpty(mAccountBean.getUname()) && !TextUtils.isEmpty(mAccountBean.getPwd())) {
+                    mInjectJS.exeJsFunctionWithParam("fillAccount", mAccountBean.getUname(), mAccountBean.getPwd());
+                    if (!JSWebViewActivity.this.isFinishing()) {
+                        mInjectJS.exeJsFunction("doAutoLogIn()");
                     }
                 }
-            });
+            }
+        });
 
 
-        }
-    }
-
-    class JSInterface {
-
-        public JSInterface() {
-            super();
-            // TODO Auto-generated constructor stub
-        }
-
-        @JavascriptInterface
-        public void saveAccountInfo(String uname, String upassword) {
-            DevLog.printLog("saveAccountInfo ", "uname: " + uname + "  password:" + upassword);
-        }
     }
 
     static String url = "https://passport.weibo.cn/signin/login?entry=mweibo&res=wel&wm=3349&r=http%3A%2F%2Fwidget.weibo.com%2Fdialog%2FPublishMobile.php%3Fbutton%3Dpublic";
@@ -235,7 +216,6 @@ public class JSWebViewActivity extends AbstractAppActivity implements IWeiboClie
             }
         }
 
-        Log.d("Weibo-Cookie", "after for : " + uid);
         if (uid.equals(mAccountBean.getUid())) {
             manager.updateAccount(AccountTable.ACCOUNT_TABLE, uid, AccountTable.COOKIE, cookie);
             BeeboApplication.getInstance().updateAccountBean();

@@ -3,7 +3,6 @@ package org.zarroboogs.weibo;
 
 import org.zarroboogs.devutils.AssertLoader;
 import org.zarroboogs.devutils.Constaces;
-import org.zarroboogs.devutils.DevLog;
 import org.zarroboogs.http.AsyncHttpHeaders;
 import org.zarroboogs.http.AsyncHttpRequest;
 import org.zarroboogs.http.AsyncHttpResponse;
@@ -33,8 +32,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 @SuppressLint("SetJavaScriptEnabled")
 public class JSAutoLogin {
@@ -91,8 +88,6 @@ public class JSAutoLogin {
 
         @Override
         public void onJSCallJava(String... arg0) {
-            DevLog.printLog("onJSCallJava Uname", "" + arg0[0]);
-            DevLog.printLog("onJSCallJava Upassword", "" + arg0[1]);
         }
 
     }
@@ -127,7 +122,6 @@ public class JSAutoLogin {
             @Override
             public void onSuccess(AsyncHttpResponse response) {
                 String r = response.getBody();
-                DevLog.printLog("JSAutoLogin onPostSuccess", r);
                 CheckUserPasswordBean cb = new Gson().fromJson(r, CheckUserPasswordBean.class);
                 if (cNamePasswordListener != null) {
                     cNamePasswordListener.onChecked(cb.getMsg());
@@ -167,7 +161,6 @@ public class JSAutoLogin {
 
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            DevLog.printLog("JSAutoLogin shouldOverrideUrlLoading", url);
             view.loadUrl(url);
             return super.shouldOverrideUrlLoading(view, url);
         }
@@ -180,7 +173,6 @@ public class JSAutoLogin {
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
 
-            DevLog.printLog("JSAutoLogin onPageStarted", url);
 
             if (url.startsWith(SeniorUrl.SeniorUrl_Public)) {
                 view.stopLoading();
@@ -201,7 +193,6 @@ public class JSAutoLogin {
                         String oneLine = Uri.decode(Uri.decode(string));
 
                         if (oneLine.contains("SUB=")) {
-                            DevLog.printLog("GSID", "" + oneLine);
                             gsid = oneLine.split("SUB=")[1];
                         }
 
@@ -218,7 +209,6 @@ public class JSAutoLogin {
                     }
                 }
 
-                Log.d("Weibo-Cookie", "after for : " + uid);
                 if (uid.equals(mAccountBean.getUid())) {
                     if (mListener != null) {
                         mListener.onAutoLonin(true);

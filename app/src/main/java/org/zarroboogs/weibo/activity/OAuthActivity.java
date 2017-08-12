@@ -2,7 +2,6 @@
 package org.zarroboogs.weibo.activity;
 
 import org.zarroboogs.devutils.AssertLoader;
-import org.zarroboogs.devutils.DevLog;
 import org.zarroboogs.injectjs.InjectJS;
 import org.zarroboogs.injectjs.InjectJS.OnLoadListener;
 import org.zarroboogs.injectjs.JSCallJavaInterface;
@@ -132,7 +131,6 @@ public class OAuthActivity extends AbstractAppActivity {
         String url = buildOAuthUrl();
         mWebView.loadUrl(url);
 
-        DevLog.printLog("OAUTH_ACTIVITY-refresh:", "" + url);
     }
 
 
@@ -206,7 +204,6 @@ public class OAuthActivity extends AbstractAppActivity {
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
             mCircleProgressBar.setVisibility(View.VISIBLE);
-            DevLog.printLog("OAUTH_ACTIVITY-onPageStarted:", "" + url);
 
             if (url.startsWith(mIsAuthPro ? WeiboOAuthConstances.HACK_DIRECT_URL : WeiboOAuthConstances.DIRECT_URL)) {
                 handleRedirectUrl(url);
@@ -228,7 +225,6 @@ public class OAuthActivity extends AbstractAppActivity {
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
-            DevLog.printLog("OAUTH_ACTIVITY-onPageFinished:", "" + url);
 
             mCircleProgressBar.setVisibility(View.GONE);
         }

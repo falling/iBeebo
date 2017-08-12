@@ -1,7 +1,6 @@
 
 package org.zarroboogs.utils;
 
-import org.zarroboogs.devutils.DevLog;
 
 import android.os.Build;
 
@@ -146,7 +145,6 @@ public class WeiBoURLs {
     public static String buildUA() {
         String str = "%s-%s__weibo__5.1.2__android__android%s";
         String result = String.format(str, Build.MANUFACTURER, Build.MODEL, Build.VERSION.RELEASE);
-        DevLog.printLog("buildUA", "" + result);
         return result;
     }
 

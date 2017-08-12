@@ -96,7 +96,6 @@ public class UploadHelper {
             @Override
             public void onSuccess(AsyncHttpResponse response) {
                 String result = response.getBody();
-                Log.d("uploadFile ", result);
                 Gson mGson = new Gson();
                 UploadPicResult ur = mGson.fromJson(PatternUtils.preasePid(result), UploadPicResult.class);
                 if (ur != null) {
@@ -106,7 +105,6 @@ public class UploadHelper {
                         }
                         return;
                     }
-                    Log.d("uploadFile   pid: ", ur.getPid());
                     mHasUploadFlag++;
                     mPids += ur.getPid() + ",";
                     if (mHasUploadFlag < mNeedToUpload.size()) {

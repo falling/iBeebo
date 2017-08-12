@@ -7,7 +7,6 @@ import java.util.Map;
 
 
 import org.zarroboogs.devutils.Constaces;
-import org.zarroboogs.devutils.DevLog;
 
 import org.zarroboogs.http.AsyncHttpHeaders;
 import org.zarroboogs.http.AsyncHttpRequest;
@@ -127,11 +126,9 @@ public class RepostWithAppSrcServices extends Service {
                     showSuccessfulNotification();
                     clearAppsrc();
                     RepostWithAppSrcServices.this.stopSelf();
-                    DevLog.printLog(TAG, "发送成功！");
                 } else {
                     NotificationUtility.cancel(R.string.repost);
 
-                    DevLog.printLog(TAG, sb.getCode() + "    " + sb.getMsg());
                     if (sb.getMsg().equals("未登录")) {
                         mJsAutoLogin.exejs();
                         mJsAutoLogin.setAutoLogInListener(new AutoLogInListener() {

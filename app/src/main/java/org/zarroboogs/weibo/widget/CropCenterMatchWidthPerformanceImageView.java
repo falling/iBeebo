@@ -7,9 +7,8 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.widget.ImageView;
 
-public class CropCenterMatchWidthPerformanceImageView extends ImageView {
+public class CropCenterMatchWidthPerformanceImageView extends android.support.v7.widget.AppCompatImageView {
 
     private boolean mMeasuredExactly = false;
 
@@ -59,9 +58,6 @@ public class CropCenterMatchWidthPerformanceImageView extends ImageView {
         if (mDrawable != null) {
 
             final Rect rect = mDrawable.getBounds();
-            if (false) {
-                Log.d("CROP_VIEW", "" + viewW + " x " + viewH);
-            }
             int drawRecW = rect.width();
             int drawRectH = rect.height();
             if (drawRecW > 0 && drawRectH > 0 && viewH > 0 && viewW > 0) {

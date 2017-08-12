@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import org.zarroboogs.weibo.support.utils.TimeUtility;
 
-public class TimeTextView extends TextView {
+public class TimeTextView extends android.support.v7.widget.AppCompatTextView {
 
     public TimeTextView(Context context) {
         super(context);

@@ -17,7 +17,7 @@ import android.view.Display;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
-public class WeiboGalleryPhotoView extends ImageView implements IPhotoView {
+public class WeiboGalleryPhotoView extends android.support.v7.widget.AppCompatImageView implements IPhotoView {
 
     private final PhotoViewAttacher mAttacher;
 

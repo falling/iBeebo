@@ -6,6 +6,7 @@ import org.zarroboogs.weibo.BeeboApplication;
 import org.zarroboogs.weibo.setting.SettingUtils;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Rect;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -15,17 +16,12 @@ import android.view.inputmethod.InputMethodManager;
 
 public class SmileyPickerUtility {
 
-    public static void hideSoftInput(View paramEditText) {
-        ((InputMethodManager) BeeboApplication.getInstance().getSystemService("input_method")).hideSoftInputFromWindow(
-                paramEditText.getWindowToken(), 0);
-    }
-
     public static void showKeyBoard(final View paramEditText) {
         paramEditText.requestFocus();
         paramEditText.post(new Runnable() {
             @Override
             public void run() {
-                ((InputMethodManager) BeeboApplication.getInstance().getSystemService("input_method")).showSoftInput(
+                ((InputMethodManager) BeeboApplication.getInstance().getSystemService(Context.INPUT_METHOD_SERVICE)).showSoftInput(
                         paramEditText, 0);
             }
         });

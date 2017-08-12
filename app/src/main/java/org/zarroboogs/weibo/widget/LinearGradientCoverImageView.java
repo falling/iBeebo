@@ -12,7 +12,7 @@ import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-public class LinearGradientCoverImageView extends ImageView {
+public class LinearGradientCoverImageView extends android.support.v7.widget.AppCompatImageView {
 
     private LinearGradient linearGradient;
 

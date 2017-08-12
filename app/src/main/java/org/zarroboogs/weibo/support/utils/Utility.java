@@ -1059,9 +1059,7 @@ public class Utility {
     }
 
     public static void printLongLog(String tagString, String log) {
-        if (TextUtils.isEmpty(log)) {
-            Log.d(tagString, log);
-        } else {
+        if (!TextUtils.isEmpty(log)) {
             if (log.length() > 3000) {
                 int len = log.length();
                 int devideNumber = len / 3000;

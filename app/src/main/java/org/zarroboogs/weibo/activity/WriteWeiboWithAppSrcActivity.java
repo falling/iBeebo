@@ -3,7 +3,6 @@ package org.zarroboogs.weibo.activity;
 
 import java.util.ArrayList;
 
-import org.zarroboogs.devutils.DevLog;
 import org.zarroboogs.keyboardlayout.KeyboardRelativeLayout;
 import org.zarroboogs.keyboardlayout.OnKeyboardStateChangeListener;
 import org.zarroboogs.keyboardlayout.smilepicker.SmileyPicker;
@@ -108,7 +107,6 @@ public class WriteWeiboWithAppSrcActivity extends BaseLoginActivity implements L
         keyboardLayout.setOnKeyboardStateListener(new OnKeyboardStateChangeListener() {
             @Override
             public void onKeyBoardShow(int height) {
-                DevLog.printLog("keyboardLayout", "onKeyBoardShow: " + height);
                 mNinePicGridView.setVisibility(View.GONE);
                 if (isSmileClicked) {
                     RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mContentRelativeLayout.getLayoutParams();
@@ -120,7 +118,6 @@ public class WriteWeiboWithAppSrcActivity extends BaseLoginActivity implements L
 
             @Override
             public void onKeyBoardHide() {
-                DevLog.printLog("keyboardLayout", "onKeyBoardHide");
 
                 if (isSmileClicked) {
                     mNinePicGridView.setVisibility(View.GONE);
@@ -450,7 +447,6 @@ public class WriteWeiboWithAppSrcActivity extends BaseLoginActivity implements L
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         WeiboWeiba weiba = ((WeiboWeiba) parent.getItemAtPosition(position));
-        Log.d("CLICK", "" + weiba);
         saveWeiba(weiba);
         // menu.toggle();
     }

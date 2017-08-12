@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Parcel;
+import android.os.Parcelable;
 import android.provider.Browser;
 import android.support.v4.app.FragmentActivity;
 import android.text.ParcelableSpan;
@@ -21,7 +22,7 @@ import android.text.style.ClickableSpan;
 import android.view.View;
 
 
-public class MyURLSpan extends ClickableSpan implements ParcelableSpan {
+public class MyURLSpan extends ClickableSpan{
 
     private final String mURL;
 

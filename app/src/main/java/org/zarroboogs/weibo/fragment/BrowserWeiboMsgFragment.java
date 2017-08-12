@@ -1,7 +1,6 @@
 
 package org.zarroboogs.weibo.fragment;
 
-import org.zarroboogs.devutils.DevLog;
 import org.zarroboogs.msrl.widget.MaterialSwipeRefreshLayout;
 import org.zarroboogs.util.net.WeiboException;
 import org.zarroboogs.utils.Constants;
@@ -858,7 +857,6 @@ public class BrowserWeiboMsgFragment extends BaseStateFragment implements IRemov
                             }
                             if (Utility.isAllNotNull(exception)) {
                                 Toast.makeText(getActivity(), exception.getError(), Toast.LENGTH_SHORT).show();
-                                DevLog.printLog("BrowserWeiboMsgFragment", "new-loadComments: " + exception.getError());
                             } else {
                                 if (data != null && data.getSize() > 0) {
                                     commentList.replaceAll(data);
@@ -877,7 +875,6 @@ public class BrowserWeiboMsgFragment extends BaseStateFragment implements IRemov
 
                             if (Utility.isAllNotNull(exception)) {
                                 Toast.makeText(getActivity(), exception.getError(), Toast.LENGTH_SHORT).show();
-                                DevLog.printLog("BrowserWeiboMsgFragment", "old-loadComments: " + exception.getError());
                                 showErrorFooterView();
                             } else {
                                 canLoadOldCommentData = !(data != null && data.getSize() <= 1);
@@ -939,7 +936,6 @@ public class BrowserWeiboMsgFragment extends BaseStateFragment implements IRemov
                             }
                             if (Utility.isAllNotNull(exception)) {
                                 Toast.makeText(getActivity(), exception.getError(), Toast.LENGTH_SHORT).show();
-                                DevLog.printLog("BrowserWeiboMsgFragment", "loadRepost: " + exception.getError());
                             } else {
                                 if (data != null && data.getSize() > 0) {
                                     repostList.replaceAll(data);
@@ -958,7 +954,6 @@ public class BrowserWeiboMsgFragment extends BaseStateFragment implements IRemov
 
                             if (Utility.isAllNotNull(exception)) {
                                 Toast.makeText(getActivity(), exception.getError(), Toast.LENGTH_SHORT).show();
-                                DevLog.printLog("BrowserWeiboMsgFragment", "old-loadRepost: " + exception.getError());
                                 showErrorFooterView();
                             } else {
                                 canLoadOldRepostData = !(data != null && data.getSize() <= 1);

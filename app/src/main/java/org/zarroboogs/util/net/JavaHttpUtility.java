@@ -275,8 +275,6 @@ public class JavaHttpUtility {
 
     public String doGet(String urlStr, Map<String, String> param) throws WeiboException {
 
-        AppLoggerUtils.printCallStack();
-
         BeeboApplication globalContext = BeeboApplication.getInstance();
         String errorStr = globalContext.getString(R.string.timeout);
         try {

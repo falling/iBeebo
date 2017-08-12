@@ -4,7 +4,6 @@ package org.zarroboogs.weibo.db.task;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
-import org.zarroboogs.devutils.DevLog;
 import org.zarroboogs.utils.AppLoggerUtils;
 import org.zarroboogs.weibo.BeeboApplication;
 import org.zarroboogs.weibo.bean.GroupBean;
@@ -103,27 +102,9 @@ public class FriendsTimeLineDBTask {
         c.close();
 
         AppLoggerUtils.e("total=" + total);
-
-        // int needDeletedNumber = total -
-        // AppConfig.DEFAULT_HOME_DB_CACHE_COUNT;
-        //
-        // if (needDeletedNumber > 0) {
-        // AppLogger.e("" + needDeletedNumber);
-        // String sql = " delete from " + HomeTable.HomeDataTable.HOME_DATA_TABLE +
-        // " where " + HomeTable.HomeDataTable.ID + " in "
-        // + "( select " + HomeTable.HomeDataTable.ID + " from " +
-        // HomeTable.HomeDataTable.HOME_DATA_TABLE + " where "
-        // + HomeTable.HomeDataTable.ACCOUNTID
-        // + " in " + "(" + accountId + ") order by " +
-        // HomeTable.HomeDataTable.ID + " desc limit " + needDeletedNumber +
-        // " ) ";
-        //
-        // getWsd().execSQL(sql);
-        // }
     }
 
     private static void replace(MessageListBean list, String accountId, String groupId) {
-        DevLog.printLog("getHomeLineMsgList replace: ", "listSize: " + list.getSize() + " accountId: " + accountId + " groupId: " + groupId);
         if (groupId.equals("0")) {
             deleteAllHomes(accountId);
             addHomeLineMsg(list, accountId);
@@ -280,13 +261,11 @@ public class FriendsTimeLineDBTask {
 
     private static void updateCount(String msgId, int commentCount, int repostCount) {
 
-        DevLog.printLog("getHomeLineMsgList - updateCount: ", " " + msgId + " " + commentCount + "  " + repostCount);
 
         String sql = "select * from " + HomeTable.HomeDataTable.HOME_DATA_TABLE + " where " + HomeTable.HomeDataTable.MBLOGID
                 + "  = " + msgId + " order by "
                 + HomeTable.HomeDataTable.ID + " asc limit 50";
 
-        DevLog.printLog("getHomeLineMsgList - updateCount: ", " SQLITE: update Count: " + sql);
 
 
         Cursor c = getRsd().rawQuery(sql, null);
@@ -366,8 +345,6 @@ public class FriendsTimeLineDBTask {
     }
 
     private static MessageListBean getHomeLineMsgList(String accountId, int limitCount) {
-
-        DevLog.printLog("getHomeLineMsgList: ", accountId + " limitCount:" + limitCount);
 
         Gson gson = new Gson();
         MessageListBean result = new MessageListBean();

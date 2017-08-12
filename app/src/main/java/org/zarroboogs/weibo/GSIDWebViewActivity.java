@@ -1,7 +1,6 @@
 package org.zarroboogs.weibo;
 
 import org.zarroboogs.devutils.AssertLoader;
-import org.zarroboogs.devutils.DevLog;
 import org.zarroboogs.injectjs.InjectJS;
 import org.zarroboogs.injectjs.JSCallJavaInterface;
 import org.zarroboogs.injectjs.InjectJS.OnLoadListener;
@@ -101,8 +100,6 @@ public class GSIDWebViewActivity extends AbstractAppActivity implements IWeiboCl
 
         @Override
         public void onJSCallJava(String... arg0) {
-            DevLog.printLog("onJSCallJava Uname", "" + arg0[0]);
-            DevLog.printLog("onJSCallJava Upassword", "" + arg0[1]);
         }
 
     }
@@ -175,10 +172,6 @@ public class GSIDWebViewActivity extends AbstractAppActivity implements IWeiboCl
 
         String passPortCookie = cookieManager.getCookie("https://passport.weibo.cn");
 
-        DevLog.printLog("Weibo-CookieStr cookie: ", cookie);
-        DevLog.printLog("Weibo-CookieStr pubCookie: ", pubCookie);
-        DevLog.printLog("Weibo-CookieStr passPortCookie: ", passPortCookie);
-
         String uid = "";
         String gsid = "";
 
@@ -188,13 +181,11 @@ public class GSIDWebViewActivity extends AbstractAppActivity implements IWeiboCl
                 String oneLine = Uri.decode(Uri.decode(string));
 
                 if (oneLine.contains("SUB=")) {
-                    DevLog.printLog("GSID", "" + oneLine);
                     gsid = oneLine.split("SUB=")[1];
                 }
 
                 if (oneLine.contains("SSOLoginState")) {
                     uid = oneLine.split("=")[1];
-                    DevLog.printLog("GSID-UID", uid);
                 }
             }
         }

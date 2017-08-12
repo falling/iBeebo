@@ -114,7 +114,6 @@ public class RepostWeiboWithAppSrcActivity extends BaseLoginActivity implements 
 
         AccountBean mAccountBean = BeeboApplication.getInstance().getAccountBean();
         // mAccountBean = getAccount();
-        Log.d("RpostWeiBo_activity", "AccountBean == null ? : " + (mAccountBean == null));
 
         mEditPicScrollView = (ScrollView) findViewById(R.id.scrollview);
 

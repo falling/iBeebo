@@ -3,7 +3,6 @@ package org.zarroboogs.weibo.widget.viewpagerfragment;
 
 import java.util.ArrayList;
 
-import org.zarroboogs.devutils.DevLog;
 import org.zarroboogs.weibo.R;
 import org.zarroboogs.weibo.activity.MainTimeLineActivity;
 import org.zarroboogs.weibo.fragment.base.AbsBaseTimeLineFragment;
@@ -79,13 +78,11 @@ public abstract class ViewPagerFragment extends BaseStateFragment implements Mai
 
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
             super.onPageScrolled(position, positionOffset, positionOffsetPixels);
-            DevLog.printLog("SimpleOnPageChangeListener onPageScrolled", "" + position + "  " + positionOffset);
         }
 
         @Override
         public void onPageScrollStateChanged(int state) {
             super.onPageScrollStateChanged(state);
-            DevLog.printLog("SimpleOnPageChangeListener onPageScrollStateChanged", "" + state);
             switch (state) {
                 case ViewPager.SCROLL_STATE_SETTLING:
                     break;

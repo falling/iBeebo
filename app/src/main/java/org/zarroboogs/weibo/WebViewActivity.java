@@ -165,7 +165,6 @@ public class WebViewActivity extends SharedPreferenceActivity implements IWeiboC
             }
         }
 
-        Log.d("Weibo-Cookie", "after for : " + uid);
         if (uid.equals(mAccountBean.getUid())) {
             manager.updateAccount(AccountTable.ACCOUNT_TABLE, uid, AccountTable.COOKIE, cookie);
             cookieManager.removeSessionCookie();

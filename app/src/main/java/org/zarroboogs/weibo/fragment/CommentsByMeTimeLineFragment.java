@@ -147,8 +147,6 @@ public class CommentsByMeTimeLineFragment extends AbsBaseTimeLineFragment<Commen
     @Override
     public void removeItem(int position) {
         if (removeTask == null || removeTask.getStatus() == MyAsyncTask.Status.FINISHED) {
-            Log.d("commentsByME: removeItem", "toaken:" + BeeboApplication.getInstance().getAccessToken() + "  ID: " + getDataList().getItemList().get(position)
-                    .getId() + "   pos:" + position);
             removeTask = new RemoveTask(BeeboApplication.getInstance().getAccessToken(), getDataList().getItemList().get(position)
                     .getId(), position);
             removeTask.executeOnExecutor(MyAsyncTask.THREAD_POOL_EXECUTOR);

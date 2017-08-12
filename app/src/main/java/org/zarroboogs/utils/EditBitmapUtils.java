@@ -225,7 +225,6 @@ public class EditBitmapUtils {
     public Bitmap getBitmapByMaxWidth(Uri uri, int width) {
         Bitmap bitmap = getBitmap(uri, width, 2048 * 10);
 
-        Log.d("START_SEND_WEIBO ", "OLD create scale Bitmap :  " + bitmap.getWidth() + " x " + bitmap.getHeight());
 
         if (bitmap.getWidth() > width) {
             int h = bitmap.getHeight() * width / bitmap.getWidth();
@@ -234,10 +233,8 @@ public class EditBitmapUtils {
             if (!bitmap.isRecycled()) {
                 bitmap.recycle();
             }
-            Log.d("START_SEND_WEIBO ", "create scale Bitmap :  " + result.getWidth() + " x " + result.getHeight());
             return result;
         }
-        Log.d("START_SEND_WEIBO ", "create scale Bitmap :  " + bitmap.getWidth() + " x " + bitmap.getHeight());
         return bitmap;
     }
 

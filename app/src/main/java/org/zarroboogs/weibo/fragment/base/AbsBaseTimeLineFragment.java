@@ -1,7 +1,6 @@
 
 package org.zarroboogs.weibo.fragment.base;
 
-import org.zarroboogs.devutils.DevLog;
 import org.zarroboogs.msrl.widget.MaterialSwipeRefreshLayout;
 import org.zarroboogs.util.net.WeiboException;
 import org.zarroboogs.utils.Constants;
@@ -210,7 +209,6 @@ public abstract class AbsBaseTimeLineFragment<T extends DataListItem<?, ?>> exte
         @Override
         public void onLoadMore() {
 
-            DevLog.printLog("TimeLineLoadMore ", "loadMore");
             if (getActivity() == null) {
                 return;
             }

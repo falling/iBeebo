@@ -1,6 +1,5 @@
 package org.zarroboogs.weibo.setting.fragment;
 
-import org.zarroboogs.devutils.DevLog;
 import org.zarroboogs.utils.CommUtils;
 import org.zarroboogs.utils.Constants;
 import org.zarroboogs.utils.RootUtils;
@@ -123,7 +122,6 @@ public class SettingsFragment extends PreferenceFragment {
         String uid = "";
 
         String cmd = "cat " + SINA_PREF_PATH;
-        DevLog.printLog(TAG + "_ROOT_CMD", cmd);
         String result = RootUtils.execRootCmd(cmd);
 
         String GSID_P = "<string name=\"key.gsid\">.*";
@@ -131,7 +129,6 @@ public class SettingsFragment extends PreferenceFragment {
         Matcher m = p.matcher(result);
         if (m.find()) {
             gsid = result.substring(m.start(), m.end()).replace("</string>", "").replace("<string name=\"key.gsid\">", "");
-            DevLog.printLog(TAG + "_ROOT_CMD", gsid);
         }
 
         String UID_P = "<long name=\"key.uid.new\" value=.*";
@@ -139,7 +136,6 @@ public class SettingsFragment extends PreferenceFragment {
         Matcher uidMatcher = uidPattern.matcher(result);
         if (uidMatcher.find()) {
             uid = result.substring(uidMatcher.start(), uidMatcher.end()).replace("\" />", "").replace("<long name=\"key.uid.new\" value=\"", "");
-            DevLog.printLog(TAG + "_ROOT_CMD", uid);
         }
 
         String accountUID = BeeboApplication.getInstance().getAccountBean().getUid();

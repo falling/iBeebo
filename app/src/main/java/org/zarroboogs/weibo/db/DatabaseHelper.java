@@ -1,7 +1,6 @@
 
 package org.zarroboogs.weibo.db;
 
-import org.zarroboogs.devutils.DevLog;
 import org.zarroboogs.weibo.BeeboApplication;
 import org.zarroboogs.weibo.db.table.AccountTable;
 import org.zarroboogs.weibo.db.table.AtUsersTable;
@@ -255,7 +254,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             deleteAllTable(db);
             onCreate(db);
         }
-        DevLog.printLog("ACCOUNT_onUpgrade", "old: " + oldVersion + "   new: " + newVersion);
         if (oldVersion <= 39) {
             deleteAllTable(db);
             onCreate(db);

@@ -28,7 +28,6 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
-import org.zarroboogs.devutils.DevLog;
 import org.zarroboogs.http.AsyncHttpHeaders;
 import org.zarroboogs.http.AsyncHttpRequest;
 import org.zarroboogs.http.AsyncHttpResponse;
@@ -396,7 +395,6 @@ public class TimeLineStatusListAdapter extends BaseAdapter {
 
 
         String url = SeniorUrl.like(id);//.like(gsid,id, ua);//WeiBoURLs.like(gsid, id);
-        DevLog.printLog("Like_doInBackground", "" + url);
 
         String cookie = SeniorUrl.geCookie(gsid, accountBean.getUsernick());
 
@@ -439,7 +437,6 @@ public class TimeLineStatusListAdapter extends BaseAdapter {
 
         String url = SeniorUrl.unlike(id);//WeiBoURLs.like(gsid, id);
 
-        DevLog.printLog("Like_doInBackground", "" + url);
 
         String cookie = SeniorUrl.geCookie(gsid, accountBean.getUsernick());
 
@@ -490,8 +487,6 @@ public class TimeLineStatusListAdapter extends BaseAdapter {
                 pic.setVisibility(View.VISIBLE);
                 String avatar = SettingUtils.getEnableBigPic() ? msg.getHighPicUrls().get(i) : msg.getThumbnailPicUrls().get(i);
                 pic.setGifFlag(avatar.endsWith(".gif"));
-
-                DevLog.printLog("buildMultiPic", avatar);
 
                 ImageLoader.load(getFragment(), avatar, pic.getImageView());
 
@@ -637,9 +632,6 @@ public class TimeLineStatusListAdapter extends BaseAdapter {
 
             ImageLoader.load(getFragment(), avatar, view.getImageView());
             view.setGifFlag(avatar.endsWith(".gif"));
-
-            DevLog.printLog("buildPic", avatar);
-
 
         } else {
             view.setVisibility(View.GONE);

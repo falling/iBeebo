@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-public class PerformanceImageView extends ImageView {
+public class PerformanceImageView extends android.support.v7.widget.AppCompatImageView {
 
     private boolean mMeasuredExactly = false;
 
