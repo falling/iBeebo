@@ -206,7 +206,7 @@ public class BrowserWeiboMsgCommentAndRepostAdapter extends BaseAdapter {
 
         holder.time.setTime(comment.getMills());
 
-        holder.comment_source.setText(Html.fromHtml(comment.getSource()).toString());
+        holder.comment_source.setText(Html.fromHtml(comment.getSource()!=null?comment.getSource():"").toString());
 
         holder.reply.setVisibility(View.VISIBLE);
         holder.reply.setOnClickListener(new View.OnClickListener() {
